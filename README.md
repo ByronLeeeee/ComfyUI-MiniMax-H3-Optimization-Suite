@@ -11,6 +11,10 @@ The repository uses **one repository / multiple independent custom nodes**.
 Nothing patches ComfyUI core files, and every optimization can be measured or
 disabled separately.
 
+For 16 GB cards, the suite now also includes an opt-in **H3 Long-Sequence VRAM
+Optimizer**. It is a guard for unusually long/high-resolution jobs, not a
+general speed node: short sequences are passed through unchanged.
+
 > The measurements currently come from one RTX 5070 Ti 16 GB workstation and
 > a limited prompt/seed set. Read the [Chinese evaluation report](EVALUATION_REPORT.zh-CN.md)
 > before treating any result as universal.
@@ -74,6 +78,9 @@ restart ComfyUI.
 For all supported controller presets and sampling modes, copy the controller,
 Fused MLP, Low-Memory Sage2, CAB Sampler, and Low-Step Sigmas directories.
 Step Profiler is optional.
+Copy `ComfyUI-H3-Long-Sequence` as well if you need the long-sequence VRAM
+guard. Its exact profiles can be tried first; the explicit `16gb_chunked`
+profile is a last-resort fallback for jobs that otherwise OOM.
 `exact_speed` additionally requires
 [ComfyUI-KJNodes](https://github.com/kijai/ComfyUI-KJNodes). Sage presets require
 a SageAttention build compatible with the active Python, PyTorch, CUDA, and GPU.
@@ -97,12 +104,23 @@ The workflow retains the original model selectors, resolution selector, audio
 and video VAE decode, and video save nodes. Change the controller preset instead
 of adding another Sage Attention node in front of it.
 
+There is also an official-style single-node Turbo example:
+[`example_workflows/MiniMax_H3_Turbo_Optimized_Simple.json`](example_workflows/MiniMax_H3_Turbo_Optimized_Simple.json).
+Its public surface is still the stock MiniMax H3 node; internally it chains the
+dedicated Turbo LoRA, accurate fused kernels, Low-Memory Sage2, the long-sequence
+guard, and T8 dual-clock sampling. The guard uses `16gb_chunked / 4096 / 256`,
+but automatically bypasses ordinary short clips.
+
+The Turbo example additionally requires the nodes and model assets from
+[T8mars/comfyui-minimax-h3-audio-T8](https://github.com/T8mars/comfyui-minimax-h3-audio-T8).
+
 ## Hardware scope
 
 | Component | Blackwell SM 12.x | Ada SM 8.9 | Other GPUs |
 |---|---:|---:|---:|
 | NVFP4 Fused MLP | yes | no | no |
 | Low-Memory Sage2 | yes | yes | not validated |
+| Long-Sequence VRAM Optimizer | yes | expected; not validated | expected; not validated |
 | CAB sampler / sigma schedule | yes | yes | expected to be portable; not validated |
 | Controller | yes | partial, with unsupported features disabled | depends on selected components |
 
@@ -114,6 +132,7 @@ of adding another Sage Attention node in front of it.
 - `ComfyUI-H3-CAB-Sampler`
 - `ComfyUI-H3-Low-Step-Sigmas`
 - `ComfyUI-H3-Step-Profiler`
+- `ComfyUI-H3-Long-Sequence`
 
 The older MLP-call skipping experiment is deliberately not included because it
 uses a separate approximate strategy and remains under evaluation.
@@ -124,6 +143,7 @@ uses a separate approximate strategy and remains under evaluation.
 - [Official CAB reference implementation](https://github.com/Anuska-Roy/CAB)
 - [SageAttention](https://github.com/thu-ml/SageAttention)
 - [ComfyUI](https://github.com/Comfy-Org/ComfyUI)
+- [T8 MiniMax H3 audio/Turbo workflow](https://github.com/T8mars/comfyui-minimax-h3-audio-T8)
 
 ## License
 
