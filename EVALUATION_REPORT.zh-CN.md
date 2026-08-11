@@ -1,7 +1,7 @@
 # MiniMax H3 ComfyUI 优化节点评估报告
 
 评估日期：2026-08-11  
-状态：实验性公开预览
+评估范围：RTX 5070 Ti 16 GB 单机实测
 
 ## 1. 结论摘要
 
@@ -198,40 +198,9 @@ override，并将 `steps` 直接输出给采样节点，防止求解器步数与
 | CAB-2 | 同为 20 步时不减少 NFE | 用于尝试降低到 14/12/10 步 |
 | biased sigmas | 当前没有正向证据 | 保持 stock simple |
 
-## 6. 16 GB 长序列显存保护试验
+## 6. 推荐配置
 
-新增的 `H3 Long-Sequence VRAM Optimizer` 面向“普通 5 秒工作流能跑、但更长或更高
-分辨率突然 OOM”的情况。它不减采样步数、不切割视频时间轴，并且在短序列上自动
-bypass。节点组合了三种手段：
-
-- 为 ComfyUI DynamicVRAM 预留激活空间，减少常驻权重挤占；
-- 分块计算专用 H3 Turbo LoRA bypass delta；
-- 仅在显式 `16gb_chunked` 模式中，按 token 行分块计算 H3 MLP。
-
-极限烟雾测试固定为 `1376×768 / 362 帧（约 15 秒）/ 4 步`，使用 NVFP4 UNet、
-专用 Turbo LoRA、accurate Fused MLP 与 Low-Memory Sage2。为单独验证 denoise，
-测试输出接到 latent sink，没有执行 Video/Audio VAE 解码。
-
-| 配置 | 结果 | 关键显存变化 | 时间 |
-|---|---|---|---:|
-| `16gb` 精确模式 | OOM | LoRA qkv 临时量 4579.8 → 252.0 MiB，但原生 NVFP4 MLP 峰值仍超限 | 未完成 |
-| `16gb_chunked`, `4096/256` | 完整跑完 | MLP FC1 临时量上界 6106.4 → 224.0 MiB；LoRA 临时量约 252 MiB | denoise 约 341.8 s；完整 prompt 351.66 s |
-
-分块尺寸探索没有发现更快的大块配置：`8192/384` 的两步平均为 86.33 s/步，
-`12288/448` 为 86.44 s/步；默认 `4096/256` 的四步平均为 85.44 s/步。因此当前
-默认保留更稳妥的 `4096/256`，不以额外峰值显存交换不存在的吞吐收益。
-[原始长序列结果表](benchmark_artifacts/raw/long_sequence_16gb_results.csv)
-保留了各配置、步数和测试边界。
-
-需要特别区分两类数值语义：`auto`、`16gb`、`24gb_plus` 不分块基础 NVFP4 MLP，
-适合作为精确路径；`16gb_chunked` 会让 NVFP4 对每个 chunk 单独推导动态输入 scale，
-因此可能与未分块结果存在小数值差异。它是“原本会 OOM 时让任务完成”的兜底，
-不是普通短视频的加速开关。本轮尚未对 15 秒输出做 VAE 解码和画质回归，不能把
-“denoise 成功”扩大表述成完整长视频流程已验证。
-
-## 7. 推荐配置
-
-### 7.1 当前KJ Sage2质量对照
+### 6.1 当前KJ Sage2质量对照
 
 ```text
 preset: exact_speed
@@ -241,7 +210,7 @@ sigmas: stock_simple
 steps: 20
 ```
 
-### 7.2 精确速度优先
+### 6.2 精确速度优先
 
 ```text
 preset: exact_speed
@@ -250,7 +219,7 @@ sigmas: stock_simple
 steps: 20
 ```
 
-### 7.3 高分辨率/长时长显存优先
+### 6.3 高分辨率/长时长显存优先
 
 ```text
 preset: exact_low_vram
@@ -259,7 +228,7 @@ sigmas: stock_simple
 steps: 20
 ```
 
-### 7.4 低步数实验
+### 6.4 低步数实验
 
 ```text
 preset: exact_speed
@@ -271,44 +240,21 @@ steps: 14 -> 12 -> 10，逐档对比20步参考
 
 低步数测试使用精确 Sage2 attention。
 
-### 7.5 16 GB 极限长序列兜底
-
-```text
-profile: 16gb_chunked
-mlp_chunk_rows: 4096
-lora_chunk_mib: 256
-manual_reserve_gib: 0
-```
-
-先尝试精确的 `auto` 或 `16gb`；只有仍然 OOM 时才切换到
-`16gb_chunked`。该节点应放在 Turbo LoRA、Fused MLP、Sage2 等模型补丁之后，
-guider/sampler 之前。
-
-## 8. 局限与后续工作
+## 7. 适用边界
 
 当前结果不能视为通用 benchmark，原因包括：
 
 - 质量对比主要来自一个 prompt 和一个 seed。
 - SSIM/PSNR 衡量的是对参考轨迹的接近度，不等同于审美质量。
-- 已完成单prompt/seed的20步参考与CAB 10/12/14步矩阵，但尚未形成大样本统计。
-- 尚未覆盖对白、复杂手部、多人交互、快速剪辑、强音画同步等高难度内容。
+- 样本范围为单prompt/seed的20步参考与CAB 10/12/14步矩阵，不代表大样本统计。
+- 测试集不包含对白、复杂手部、多人交互、快速剪辑、强音画同步等高难度内容。
 - Blackwell 以外仅验证了 Low-Memory Sage2 的设计兼容范围，没有完整实机矩阵。
 - CAB-14捕获到一次61秒首步异常，说明动态权重加载和
   缓存状态仍会污染单次完整耗时；报告因此采用了相同hash的暖机复测denoise值。
-- 15秒长序列仅验证了 denoise 能完成，尚未验证完整 VAE 解码、最终视频质量，
-  也没有把 `16gb_chunked` 标记为数值精确路径。
 
-建议后续建立 8–12 个固定 prompt、至少 3 个 seed 的回归集，分别记录：
-
-- denoise time、完整 prompt time、NFE；
-- peak allocated/reserved VRAM 与 Windows shared GPU memory；
-- latent hash、逐帧 SSIM/PSNR/VMAF；
-- 人物结构、运动连续性、提示词遵循、音画同步的盲评结果。
-
-## 9. 外部参考
+## 8. 外部参考
 
 - CAB paper: <https://arxiv.org/abs/2605.16736>
 - CAB official implementation: <https://github.com/Anuska-Roy/CAB>
 - SageAttention: <https://github.com/thu-ml/SageAttention>
 - ComfyUI: <https://github.com/Comfy-Org/ComfyUI>
-- T8 MiniMax H3 audio/Turbo workflow: <https://github.com/T8mars/comfyui-minimax-h3-audio-T8>

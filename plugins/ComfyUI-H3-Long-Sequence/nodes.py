@@ -444,26 +444,3 @@ class H3LongSequenceVRAMOptimizer:
             float(manual_reserve_gib),
         )
         return (patched,)
-
-
-class H3LongSequenceLatentSink:
-    """Benchmark output that deliberately does not copy H3's NestedTensor."""
-
-    @classmethod
-    def INPUT_TYPES(cls):
-        return {"required": {"latent": ("LATENT",)}}
-
-    RETURN_TYPES = ()
-    FUNCTION = "consume"
-    CATEGORY = "sampling/minimax_h3/suite/testing"
-    OUTPUT_NODE = True
-    EXPERIMENTAL = True
-    DESCRIPTION = (
-        "Testing-only output used to benchmark H3 denoising without VAE decode "
-        "or trying to serialize the AV NestedTensor."
-    )
-
-    def consume(self, latent):
-        samples = latent.get("samples") if isinstance(latent, dict) else latent
-        sample_type = f"{type(samples).__module__}.{type(samples).__name__}"
-        return {"ui": {"text": [f"H3 latent accepted: {sample_type}"]}}

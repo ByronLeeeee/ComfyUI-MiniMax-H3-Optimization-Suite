@@ -1,5 +1,0 @@
-profile,mlp_chunk_rows,lora_chunk_mib,width,height,frames,steps,result,seconds_per_step,prompt_seconds,vae_decode,notes
-16gb,4096,256,1376,768,362,4,oom,,,false,"Exact base MLP path; Turbo LoRA temporaries chunked, but NVFP4 MLP peak still exceeded 16 GB"
-16gb_chunked,4096,256,1376,768,362,4,success,85.44,351.66,false,"Recommended fallback; MLP FC1 upper bound 6106.4 to 224.0 MiB"
-16gb_chunked,8192,384,1376,768,362,2,success,86.33,174.42,false,"Larger chunks did not improve throughput"
-16gb_chunked,12288,448,1376,768,362,2,success,86.44,178.21,false,"Larger chunks did not improve throughput"

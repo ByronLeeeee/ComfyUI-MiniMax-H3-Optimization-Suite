@@ -24,7 +24,7 @@ small numerical differences from the exact path are expected.
 This trades some throughput for a lower peak. It is intended for jobs that
 otherwise OOM; it is not expected to accelerate short clips.
 
-Validated 16 GB fallback setting:
+Suggested 16 GB fallback defaults:
 
 ```text
 profile: 16gb_chunked
@@ -32,9 +32,3 @@ mlp_chunk_rows: 4096
 lora_chunk_mib: 256
 manual_reserve_gib: 0
 ```
-
-In a `1376x768 / 362-frame / 4-step` denoise-only stress test, the exact
-`16gb` profile still OOMed while the setting above completed all four steps.
-The MLP FC1 BF16/FP16 temporary upper bound fell from about 6106 MiB to 224
-MiB per call. This test deliberately omitted VAE decode, and the chunked mode
-is not bit-exact because NVFP4 dynamic input scales are derived per chunk.
