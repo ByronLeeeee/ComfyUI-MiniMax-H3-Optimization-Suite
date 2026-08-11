@@ -1,16 +1,22 @@
 import importlib.util
+import os
 import pathlib
 import sys
 
 import torch
 
 
-COMFY_ROOT = pathlib.Path(
-    r"C:\Users\demon\AppData\Local\Comfy-Desktop\ComfyUI-Installs\ComfyUI\ComfyUI"
-)
-sys.path.insert(0, str(COMFY_ROOT))
-
-from comfy.nested_tensor import NestedTensor  # noqa: E402
+try:
+    from comfy.nested_tensor import NestedTensor
+except ModuleNotFoundError:
+    comfy_root = os.environ.get("COMFYUI_ROOT")
+    if not comfy_root:
+        raise RuntimeError(
+            "Run this test from ComfyUI's Python environment or set COMFYUI_ROOT "
+            "to the directory that contains the comfy package."
+        ) from None
+    sys.path.insert(0, str(pathlib.Path(comfy_root).resolve()))
+    from comfy.nested_tensor import NestedTensor  # noqa: E402
 
 
 MODULE_PATH = pathlib.Path(__file__).parents[1] / "nodes.py"

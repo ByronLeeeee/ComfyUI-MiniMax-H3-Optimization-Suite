@@ -37,7 +37,9 @@ Recommended low-step starting point:
 - sampler: `CAB-2`
 - theta: `0.20`
 - sigmas: `stock_simple`
-- steps: `6` for experiments, `8-10` when prioritizing quality
+- steps: begin at `14`, then compare `12` and `10` against a fixed 20-step
+  reference. Six steps are useful only for aggressive solver research and are
+  not presented as a general quality preset.
 
 `CAB-3` and biased sigma profiles remain experimental. `res_multistep` is kept
 as a convenient control. CAB changes the numerical solver; it does not skip a

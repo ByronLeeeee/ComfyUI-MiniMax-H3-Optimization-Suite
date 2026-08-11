@@ -13,8 +13,9 @@ The node combines three peak-memory controls:
 Short sequences stay on the original forward path. The default `auto` profile
 detects total VRAM; `16gb` is the current exact validation target. These exact
 profiles use LoRA chunking and DynamicVRAM activation reserve but leave the base
-NVFP4 MLP calculation intact. Put the node after the Turbo LoRA and other H3
-model patches, and before the guider/sampler.
+NVFP4 MLP calculation intact. Put the node after any LoRA and other H3 model
+patches, and before the guider/sampler. A Turbo LoRA is optional; the activation
+reserve and base-MLP controls also apply to ordinary native H3 workflows.
 
 `16gb_chunked` is an explicit last-resort profile. It also chunks the base MLP,
 which greatly reduces the FC1 peak but makes NVFP4 derive a separate dynamic

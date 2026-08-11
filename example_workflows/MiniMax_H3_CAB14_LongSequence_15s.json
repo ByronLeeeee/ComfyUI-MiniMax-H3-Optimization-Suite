@@ -135,7 +135,7 @@
       },
       "widgets_values": [
         "16:9 (Widescreen)",
-        0.3,
+        0.9,
         32
       ]
     },
@@ -255,17 +255,17 @@
         "previewExposures": []
       },
       "widgets_values": [
-        "integrated_multimodal_description: [Shot 1] 竖屏9:16，电影级拟人猫三维动画，办公室喜剧短片风格，真实柔和的室内灯光。一只灰色狸花猫穿着白色衬衣和稍微松开的蓝色领带，坐在现代开放式办公室的工位前，认真敲击键盘处理工作。电脑屏幕显示简洁的人工智能任务界面。镜头从中景缓慢推进。狸花猫突然停止打字，身体继续面向电脑，先快速扭头看向左边，再快速扭头看向右边，确认周围的猫同事都没有注意自己。办公室里的所有角色都是拟人猫。\n\n[Shot 2] At 00:03.500, 镜头切到狸花猫肩膀后方的电脑屏幕特写，一只猫爪握着鼠标。电脑界面的顶部只显示清晰、端正的标题“AI助手”，旁边有一个清晰的中文标记“公司额度”。狸花猫打开任务选择菜单，偷偷选择名为“私活”的任务，然后点击确认。“私活”两个汉字被清晰高亮。\n\n[Shot 3] At 00:06.500, 镜头切到同一只灰色狸花猫的面部近景，保持毛色花纹、白色衬衣和蓝色领带完全一致。狸花猫微微低头，眼睛眯起，一只猫爪挡住嘴角，露出得意又心虚的笑容。它努力憋笑，肩膀轻轻抖动一下，发出一声短促的偷笑。\n\n[Shot 4] At 00:08.500, 画面突然硬切。同一只灰色狸花猫已经呆呆地坐在警车后排，仍然穿着相同的白色衬衣和松开的蓝色领带。它的笑容完全消失，双眼睁大、目光空洞，两只耳朵向下耷拉，身体僵硬，一动不动。它的左右两边各坐着一只神情严肃的警察猫，一只是橘猫，一只是黑白色的，两只警察猫都穿着深色警服，正襟危坐，沉默地看向前方。红蓝警灯的光芒不断扫过三只猫的脸。镜头开始于后排座位正前方，随后缓慢向车头方向后拉，经过前排驾驶舱，司机位还有一只穿着警服的黑猫在开车。从前挡风玻璃向外继续拉远，最终露出警车车头和车顶闪烁的红蓝警灯。车头没有文字。同一只衬衣猫始终呆坐在两只警察猫中间，直到视频结束。所有角色外形和服装前后一致。\n\noverall_soundscape: 安静的办公室空调声、快速键盘敲击声、轻微鼠标点击声和远处的打印机声。狸花猫左右张望时伴随轻微的衬衣摩擦声和办公椅转动声，选择“私活”后响起一次清晰的确认点击声，随后是一声压抑的猫咪偷笑。画面硬切时办公室声音瞬间停止，转为警车发动机低鸣、微弱的车载电台杂音、座椅轻响和远处循环响起的警笛声。\n\nnon_diegetic_music: 办公室段落使用轻快、稀疏的拨弦乐器节奏。切到警车的一刻音乐突然停止，紧接着出现一次低沉的管弦乐重音，随后用持续的低音一直延伸到结尾。",
+        "integrated_multimodal_description: [Shot 1] Live-action cinematic realism at a modern coastal railway platform during warm late-afternoon light. A young adult woman with short curly black hair wears a mustard-yellow raincoat and a navy-blue backpack. She stands beside a small white-and-brown dog wearing a red collar and holds a bright red paper ticket in her right hand. A clean overhead sign reads \"PLATFORM 4\". The camera begins in a medium-wide view and slowly pushes in while wind moves her coat and the dog's fur; keep the woman's face, hairstyle, clothing, backpack, the dog's markings, collar, and the ticket consistent throughout.\n\n[Shot 2] At 00:04.000, a gust pulls the red ticket from her hand. The camera cuts to a low tracking shot as the ticket skims along the platform and the dog runs after it, weaving around one bench without colliding with anyone. The woman follows several steps behind. The ticket remains clearly red and the same dog remains in frame.\n\n[Shot 3] At 00:08.000, the camera cuts to a steady medium shot near the platform clock. A station worker catches the ticket and hands it back to the woman. She accepts it with her right hand, checks that it is the same red ticket, smiles with relief, and says in a natural, grateful voice (S1), <d>[English] Thank you. I thought I'd missed it.</d> The dog stops beside her left leg and looks up at her.\n\n[Shot 4] At 00:12.000, a silver passenger train arrives behind them and slows to a smooth stop. The camera arcs gently around the woman as the doors open. She secures the red ticket in her coat pocket, boards with the navy-blue backpack, then turns and waves once through the open doorway. The dog remains safely on the platform beside the station worker. End on a stable wide composition with the woman visible in the train doorway, the dog and worker on the platform, and the \"PLATFORM 4\" sign still readable.\n\noverall_soundscape: Continuous coastal wind, distant gulls, soft station ambience, footsteps, paper flutter, the dog's running paws and one short bark. The worker catches the ticket with a crisp paper snap; the approaching train adds rail vibration, braking hiss, a soft arrival chime, and opening-door sounds. Dialogue remains clear above the environment.\n\nnon_diegetic_music: Light acoustic guitar with restrained strings at a moderate tempo. The rhythm builds gently during the ticket chase, softens under the spoken line, and resolves on a warm sustained chord as the train doors open.",
+        1280,
         736,
-        416,
-        5,
-        1010506309077752,
+        15,
+        4242424242,
         "MiniMax_H3_FL2VA_pruned_nvfp4.safetensors",
         "qwen3vl_32b_minimax_h3_nvfp4_awq.safetensors",
         "minimax_h3_video_vae_fp16.safetensors",
         "minimax_h3_audio_vae_fp32.safetensors"
       ],
-      "title": "MiniMax H3 Turbo Optimized"
+      "title": "MiniMax H3 CAB-14 Long Sequence (15s)"
     },
     {
       "id": 116,
@@ -374,13 +374,13 @@
         "version": 1,
         "state": {
           "lastGroupId": 4,
-          "lastNodeId": 123,
-          "lastLinkId": 235,
+          "lastNodeId": 121,
+          "lastLinkId": 232,
           "lastRerouteId": 0
         },
         "revision": 0,
         "config": {},
-        "name": "Image to Video (MiniMax H3 Turbo Optimized)",
+        "name": "Image to Video (MiniMax H3 CAB-14 Long Sequence)",
         "inputNode": {
           "id": -10,
           "bounding": [
@@ -740,6 +740,74 @@
               "Node name for S&R": "VAEDecode"
             },
             "widgets_values": []
+          },
+          {
+            "id": 9,
+            "type": "BasicScheduler",
+            "pos": [
+              -908.2392995389534,
+              4871.046224676407
+            ],
+            "size": [
+              225,
+              130
+            ],
+            "flags": {},
+            "order": 2,
+            "mode": 0,
+            "inputs": [
+              {
+                "localized_name": "模型",
+                "name": "model",
+                "type": "MODEL",
+                "link": 230
+              },
+              {
+                "localized_name": "调度器",
+                "name": "scheduler",
+                "type": "COMBO",
+                "widget": {
+                  "name": "scheduler"
+                },
+                "link": null
+              },
+              {
+                "localized_name": "步数",
+                "name": "steps",
+                "type": "INT",
+                "widget": {
+                  "name": "steps"
+                },
+                "link": null
+              },
+              {
+                "localized_name": "降噪",
+                "name": "denoise",
+                "type": "FLOAT",
+                "widget": {
+                  "name": "denoise"
+                },
+                "link": null
+              }
+            ],
+            "outputs": [
+              {
+                "localized_name": "Sigmas",
+                "name": "SIGMAS",
+                "type": "SIGMAS",
+                "links": [
+                  18
+                ]
+              }
+            ],
+            "properties": {
+              "Node name for S&R": "BasicScheduler"
+            },
+            "widgets_values": [
+              "simple",
+              14,
+              1
+            ]
           },
           {
             "id": 14,
@@ -1182,8 +1250,7 @@
                 "name": "LATENT",
                 "type": "LATENT",
                 "links": [
-                  188,
-                  234
+                  188
                 ]
               }
             ],
@@ -1191,10 +1258,10 @@
               "Node name for S&R": "MiniMaxH3ImageToVideo"
             },
             "widgets_values": [
-              "Vaporwave title sequence look: pink and blue gradient palette, VHS tracking artifacts, Greek statue motifs, chrome palm trees, RGB chromatic aberration, lo-fi retro atmosphere, mood languid and nostalgic.\n\nTimeline:\n[0s-1s] VHS static opens the frame, the title \"COMFYUI\" appears with RGB split and a slight horizontal jitter.\n[1s-2.5s] Hard cut, a Greek plaster bust close-up, pink-purple gradient sky, a pixelated sun.\n[2.5s-4s] Clean \"STARRING\" credits appear, \"LATENT\" and \"CONTROLNET\" each shown exactly once.\n[4s-5s] Final card \"DIRECTED BY COMFYUI\" holds, one VHS tracking glitch settling into stability.\n\nHard cuts only, transitions landing with tape jumps, no push-ins, no dissolves.\n\nAudio: lo-fi vaporwave score, slow drum machine with soft bass, VHS tape-noise sample joins at 2.5s, melody fading for the last 1s.\n\nAll text must be clearly legible, do not misspell English, no Chinese characters, do not repeat names or job titles, no soft dissolves, no subtitle bars.",
-              1344,
-              768,
-              73
+              "integrated_multimodal_description: [Shot 1] Live-action cinematic realism at a modern coastal railway platform during warm late-afternoon light. A young adult woman with short curly black hair wears a mustard-yellow raincoat and a navy-blue backpack. She stands beside a small white-and-brown dog wearing a red collar and holds a bright red paper ticket in her right hand. A clean overhead sign reads \"PLATFORM 4\". The camera begins in a medium-wide view and slowly pushes in while wind moves her coat and the dog's fur; keep the woman's face, hairstyle, clothing, backpack, the dog's markings, collar, and the ticket consistent throughout.\n\n[Shot 2] At 00:04.000, a gust pulls the red ticket from her hand. The camera cuts to a low tracking shot as the ticket skims along the platform and the dog runs after it, weaving around one bench without colliding with anyone. The woman follows several steps behind. The ticket remains clearly red and the same dog remains in frame.\n\n[Shot 3] At 00:08.000, the camera cuts to a steady medium shot near the platform clock. A station worker catches the ticket and hands it back to the woman. She accepts it with her right hand, checks that it is the same red ticket, smiles with relief, and says in a natural, grateful voice (S1), <d>[English] Thank you. I thought I'd missed it.</d> The dog stops beside her left leg and looks up at her.\n\n[Shot 4] At 00:12.000, a silver passenger train arrives behind them and slows to a smooth stop. The camera arcs gently around the woman as the doors open. She secures the red ticket in her coat pocket, boards with the navy-blue backpack, then turns and waves once through the open doorway. The dog remains safely on the platform beside the station worker. End on a stable wide composition with the woman visible in the train doorway, the dog and worker on the platform, and the \"PLATFORM 4\" sign still readable.\n\noverall_soundscape: Continuous coastal wind, distant gulls, soft station ambience, footsteps, paper flutter, the dog's running paws and one short bark. The worker catches the ticket with a crisp paper snap; the approaching train adds rail vibration, braking hiss, a soft arrival chime, and opening-door sounds. Dialogue remains clear above the environment.\n\nnon_diegetic_music: Light acoustic guitar with restrained strings at a moderate tempo. The rhythm builds gently during the ticket chase, softens under the spoken line, and resolves on a warm sustained chord as the train doors open.",
+              1280,
+              736,
+              361
             ]
           },
           {
@@ -1313,15 +1380,15 @@
           },
           {
             "id": 119,
-            "type": "MiniMaxH3TurboLoRA",
-            "title": "Turbo LoRA (hidden implementation)",
+            "type": "H3FusedKernels",
+            "title": "Fused kernels (accurate)",
             "pos": [
-              -1540,
-              4380
+              -1356.992824353138,
+              4392.470901007276
             ],
             "size": [
-              390,
-              106
+              320,
+              130
             ],
             "flags": {},
             "order": 15,
@@ -1331,70 +1398,6 @@
                 "name": "model",
                 "type": "MODEL",
                 "link": 228
-              },
-              {
-                "name": "lora_name",
-                "type": "COMBO",
-                "widget": {
-                  "name": "lora_name"
-                },
-                "link": null
-              },
-              {
-                "name": "strength",
-                "type": "FLOAT",
-                "widget": {
-                  "name": "strength"
-                },
-                "link": null
-              },
-              {
-                "name": "low_vram",
-                "type": "BOOLEAN",
-                "widget": {
-                  "name": "low_vram"
-                },
-                "link": null
-              }
-            ],
-            "outputs": [
-              {
-                "name": "MODEL",
-                "type": "MODEL",
-                "links": [
-                  231
-                ]
-              }
-            ],
-            "properties": {
-              "Node name for S&R": "MiniMaxH3TurboLoRA"
-            },
-            "widgets_values": [
-              "minimax_h3_fl2v_lightx2v_turbo_4step_v0.1_comfy_resized_avg_rank_21_bf16.safetensors",
-              1,
-              false
-            ]
-          },
-          {
-            "id": 120,
-            "type": "H3FusedKernels",
-            "title": "Fused kernels (accurate)",
-            "pos": [
-              -1110,
-              4380
-            ],
-            "size": [
-              330,
-              130
-            ],
-            "flags": {},
-            "order": 16,
-            "mode": 0,
-            "inputs": [
-              {
-                "name": "model",
-                "type": "MODEL",
-                "link": 231
               },
               {
                 "name": "backend",
@@ -1418,7 +1421,7 @@
                 "name": "MODEL",
                 "type": "MODEL",
                 "links": [
-                  232
+                  231
                 ]
               }
             ],
@@ -1431,25 +1434,25 @@
             ]
           },
           {
-            "id": 121,
+            "id": 120,
             "type": "H3LowMemorySage2Attention",
             "title": "Low-memory Sage2",
             "pos": [
-              -740,
-              4380
+              -986.9928243531381,
+              4392.470901007276
             ],
             "size": [
-              330,
+              300,
               80
             ],
             "flags": {},
-            "order": 17,
+            "order": 16,
             "mode": 0,
             "inputs": [
               {
                 "name": "model",
                 "type": "MODEL",
-                "link": 232
+                "link": 231
               }
             ],
             "outputs": [
@@ -1457,7 +1460,7 @@
                 "name": "MODEL",
                 "type": "MODEL",
                 "links": [
-                  233
+                  232
                 ]
               }
             ],
@@ -1467,25 +1470,25 @@
             "widgets_values": []
           },
           {
-            "id": 123,
+            "id": 121,
             "type": "H3LongSequenceVRAMOptimizer",
-            "title": "Long-sequence VRAM guard (16 GB)",
+            "title": "Long-sequence guard (16 GB fallback)",
             "pos": [
-              -370,
-              4380
+              -646.9928243531381,
+              4392.470901007276
             ],
             "size": [
               390,
               190
             ],
             "flags": {},
-            "order": 18,
+            "order": 17,
             "mode": 0,
             "inputs": [
               {
                 "name": "model",
                 "type": "MODEL",
-                "link": 233
+                "link": 232
               },
               {
                 "name": "profile",
@@ -1525,7 +1528,8 @@
                 "name": "MODEL",
                 "type": "MODEL",
                 "links": [
-                  235
+                  229,
+                  230
                 ]
               }
             ],
@@ -1540,104 +1544,53 @@
             ]
           },
           {
-            "id": 122,
-            "type": "MiniMaxH3DualClockSamplerT8",
-            "title": "Stable 4 video / 4 audio",
+            "id": 17,
+            "type": "H3CABSampler",
+            "title": "CAB-2 (14-step conservative)",
             "pos": [
-              60,
-              4380
+              -796.1350579949458,
+              4734.87198087155
             ],
             "size": [
-              390,
-              230
+              260,
+              100
             ],
             "flags": {},
-            "order": 19,
+            "order": 0,
             "mode": 0,
             "inputs": [
               {
-                "name": "model",
-                "type": "MODEL",
-                "link": 235
-              },
-              {
-                "name": "av_latent",
-                "type": "LATENT",
-                "link": 234
-              },
-              {
-                "name": "steps",
-                "type": "INT",
-                "widget": {
-                  "name": "steps"
-                },
-                "link": null
-              },
-              {
-                "name": "shift_video",
-                "type": "FLOAT",
-                "widget": {
-                  "name": "shift_video"
-                },
-                "link": null
-              },
-              {
-                "name": "shift_audio",
-                "type": "FLOAT",
-                "widget": {
-                  "name": "shift_audio"
-                },
-                "link": null
-              },
-              {
-                "name": "sampler_name",
+                "name": "order",
                 "type": "COMBO",
                 "widget": {
-                  "name": "sampler_name"
+                  "name": "order"
                 },
                 "link": null
               },
               {
-                "name": "scheduler",
-                "type": "COMBO",
+                "name": "theta",
+                "type": "FLOAT",
                 "widget": {
-                  "name": "scheduler"
+                  "name": "theta"
                 },
                 "link": null
               }
             ],
             "outputs": [
               {
-                "name": "model",
-                "type": "MODEL",
-                "links": [
-                  229
-                ]
-              },
-              {
-                "name": "sampler",
+                "name": "SAMPLER",
                 "type": "SAMPLER",
                 "links": [
                   16
                 ]
-              },
-              {
-                "name": "sigmas",
-                "type": "SIGMAS",
-                "links": [
-                  18
-                ]
               }
             ],
             "properties": {
-              "Node name for S&R": "MiniMaxH3DualClockSamplerT8"
+              "Node name for S&R": "H3CABSampler"
             },
             "widgets_values": [
-              4,
-              12,
-              3,
-              "dual_clock_euler",
-              "native_flow"
+              "CAB-2",
+              0.2
             ]
           }
         ],
@@ -1726,16 +1679,16 @@
           },
           {
             "id": 16,
-            "origin_id": 122,
-            "origin_slot": 1,
+            "origin_id": 17,
+            "origin_slot": 0,
             "target_id": 14,
             "target_slot": 2,
             "type": "SAMPLER"
           },
           {
             "id": 18,
-            "origin_id": 122,
-            "origin_slot": 2,
+            "origin_id": 9,
+            "origin_slot": 0,
             "target_id": 14,
             "target_slot": 3,
             "type": "SIGMAS"
@@ -1926,9 +1879,17 @@
           },
           {
             "id": 229,
-            "origin_id": 122,
+            "origin_id": 121,
             "origin_slot": 0,
             "target_id": 16,
+            "target_slot": 0,
+            "type": "MODEL"
+          },
+          {
+            "id": 230,
+            "origin_id": 121,
+            "origin_slot": 0,
+            "target_id": 9,
             "target_slot": 0,
             "type": "MODEL"
           },
@@ -1945,30 +1906,6 @@
             "origin_id": 120,
             "origin_slot": 0,
             "target_id": 121,
-            "target_slot": 0,
-            "type": "MODEL"
-          },
-          {
-            "id": 233,
-            "origin_id": 121,
-            "origin_slot": 0,
-            "target_id": 123,
-            "target_slot": 0,
-            "type": "MODEL"
-          },
-          {
-            "id": 234,
-            "origin_id": 104,
-            "origin_slot": 1,
-            "target_id": 122,
-            "target_slot": 1,
-            "type": "LATENT"
-          },
-          {
-            "id": 235,
-            "origin_id": 123,
-            "origin_slot": 0,
-            "target_id": 122,
             "target_slot": 0,
             "type": "MODEL"
           }
@@ -1991,15 +1928,25 @@
         -4626.881251604325
       ]
     },
-    "h3_turbo_optimized": {
-      "version": 2,
-      "implementation": [
-        "MiniMaxH3TurboLoRA",
+    "h3_cab14_long_sequence_example": {
+      "repository_publish": true,
+      "target": "15-second 16:9 globally reproducible audiovisual continuity test",
+      "model_chain": [
         "H3FusedKernels:auto/accurate",
         "H3LowMemorySage2Attention",
-        "H3LongSequenceVRAMOptimizer:16gb_chunked/4096/256",
-        "MiniMaxH3DualClockSamplerT8:4/4"
-      ]
+        "H3LongSequenceVRAMOptimizer:16gb_chunked/4096/256"
+      ],
+      "sampler": "CAB-2",
+      "theta": 0.2,
+      "steps": 14,
+      "scheduler": "simple",
+      "resolution": [
+        1280,
+        736
+      ],
+      "duration_seconds": 15,
+      "seed": 4242424242,
+      "numerical_note": "16gb_chunked changes NVFP4 dynamic scaling per chunk and is not bit-exact to the unchunked path"
     }
   },
   "version": 0.4

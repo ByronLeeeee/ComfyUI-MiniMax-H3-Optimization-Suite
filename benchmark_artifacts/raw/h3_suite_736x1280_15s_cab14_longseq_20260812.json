@@ -1,0 +1,50 @@
+{
+  "date": "2026-08-12",
+  "hardware": {
+    "gpu": "NVIDIA GeForce RTX 5070 Ti",
+    "dedicated_vram_gib": 16,
+    "architecture": "Blackwell SM 12.0"
+  },
+  "model": "MiniMax_H3_FL2VA_pruned_nvfp4.safetensors",
+  "workload": {
+    "mode": "text-to-video",
+    "width": 736,
+    "height": 1280,
+    "requested_duration_seconds": 15,
+    "output_duration_seconds": 15.083333,
+    "fps": 24,
+    "steps": 14,
+    "scheduler": "simple"
+  },
+  "chain": [
+    "H3FusedKernels:auto/accurate",
+    "H3LowMemorySage2Attention",
+    "H3LongSequenceVRAMOptimizer:16gb_chunked/4096/256",
+    "H3CABSampler:CAB-2/theta=0.20"
+  ],
+  "result": {
+    "status": "completed",
+    "denoise_seconds": 940,
+    "average_seconds_per_step": 67.15,
+    "full_prompt_seconds": 1064,
+    "output_bytes": 5252611,
+    "video_codec": "h264",
+    "audio_codec": "aac",
+    "audio_sample_rate_hz": 32000,
+    "audio_channels": 2,
+    "sha256": "A6A042E0884FC319C48F1C88ADE2573C75A0149EFD9E23ED6C886CFA59A524FB"
+  },
+  "memory_guard": {
+    "estimated_rows": 98842,
+    "packed_rows": 100363,
+    "activation_reserve_mib": 5120,
+    "mlp_chunk_rows": 4096,
+    "fc1_temporary_upper_bound_before_mib": 5488.6,
+    "fc1_temporary_upper_bound_per_chunk_mib": 224.0
+  },
+  "limitations": [
+    "This run validates completion on a 16 GB card; it is not a controlled speed comparison.",
+    "The 16gb_chunked profile changes NVFP4 dynamic input scaling per chunk and is not bit-exact to an unchunked forward pass.",
+    "No same-prompt, same-seed, same-shape 20-step reference was generated for quantitative quality metrics."
+  ]
+}
