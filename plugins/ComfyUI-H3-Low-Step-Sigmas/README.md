@@ -18,7 +18,7 @@ Profiles:
 
 Connect the `SIGMAS` output to `SamplerCustomAdvanced`. Start with 6-8 steps and
 `res_multistep`. The schedule does not reduce the number of model calls by
-itself and is independent of the MLP, Hybrid Attention, and Low-Memory Sage2
+itself and is independent of the MLP, attention, and Low-Memory Sage2
 plugins.
 
 ## Validation note

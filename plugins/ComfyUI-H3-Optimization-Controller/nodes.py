@@ -11,14 +11,11 @@ LOG = logging.getLogger("h3_optimization_controller")
 CONTROLLER_KEY = "h3_optimization_controller_config"
 FUSED_KEY = "h3_nvfp4_fused_mlp_config"
 LOW_MEMORY_KEY = "h3_low_memory_sage2_config"
-HYBRID_KEY = "h3_blackwell_hybrid_attention_config"
 ATTENTION_OVERRIDE_KEY = "optimized_attention_override"
 
 PRESETS = [
-    "exact_low_vram",
     "exact_speed",
-    "balanced_fast",
-    "maximum_speed",
+    "exact_low_vram",
     "off",
 ]
 
@@ -62,7 +59,7 @@ def _ensure_attention_is_unpatched(model):
     options = _transformer_options(model)
     conflicts = [
         key
-        for key in (LOW_MEMORY_KEY, HYBRID_KEY, ATTENTION_OVERRIDE_KEY)
+        for key in (LOW_MEMORY_KEY, ATTENTION_OVERRIDE_KEY)
         if key in options
     ]
     if conflicts:
@@ -78,7 +75,7 @@ class H3OptimizationController:
         return {
             "required": {
                 "model": ("MODEL",),
-                "preset": (PRESETS, {"default": "exact_low_vram"}),
+                "preset": (PRESETS, {"default": "exact_speed"}),
                 "steps": ("INT", {"default": 10, "min": 1, "max": 200}),
                 "fused_mlp": ("BOOLEAN", {"default": True}),
             },
@@ -87,11 +84,6 @@ class H3OptimizationController:
                     ["off", "auto_safe", "auto_balanced"],
                     {"default": "off"},
                 ),
-                "sage2_edge_calls": (
-                    "INT",
-                    {"default": 1, "min": 0, "max": 50},
-                ),
-                "sage3_per_block_mean": ("BOOLEAN", {"default": False}),
                 "allow_compile": ("BOOLEAN", {"default": True}),
             },
         }
@@ -103,20 +95,18 @@ class H3OptimizationController:
     EXPERIMENTAL = True
     DESCRIPTION = (
         "One front door for the standalone H3 optimization plugins. It can "
-        "combine exact fused NVFP4 MLP with stock Sage2, exact low-memory "
-        "Sage2, hybrid edge Sage2/Sage3, or Sage3-all. The steps output should "
+        "combine exact fused NVFP4 MLP with stock Sage2 or exact low-memory "
+        "Sage2. The steps output should "
         "be connected to H3 Optimized Sampling so both nodes stay synchronized."
     )
 
     def apply(
         self,
         model,
-        preset="exact_low_vram",
+        preset="exact_speed",
         steps=10,
         fused_mlp=True,
         vram_residency="off",
-        sage2_edge_calls=1,
-        sage3_per_block_mean=False,
         allow_compile=True,
     ):
         steps = int(steps)
@@ -155,19 +145,6 @@ class H3OptimizationController:
                 sage_attention="auto",
                 allow_compile=bool(allow_compile),
             )[0]
-        elif preset in ("balanced_fast", "maximum_speed"):
-            strategy = (
-                "hybrid_sage2_edges" if preset == "balanced_fast" else "sage3_all"
-            )
-            patched = _invoke(
-                "H3BlackwellHybridAttention",
-                "apply",
-                model=patched,
-                strategy=strategy,
-                expected_denoise_calls=steps,
-                sage2_edge_calls=int(sage2_edge_calls),
-                sage3_per_block_mean=bool(sage3_per_block_mean),
-            )[0]
         else:
             raise AssertionError(f"Unhandled H3 optimization preset: {preset}")
 
@@ -177,8 +154,6 @@ class H3OptimizationController:
             "steps": steps,
             "fused_mlp": bool(fused_mlp) or fused_was_present,
             "vram_residency": vram_residency,
-            "sage2_edge_calls": int(sage2_edge_calls),
-            "sage3_per_block_mean": bool(sage3_per_block_mean),
             "allow_compile": bool(allow_compile),
         }
         LOG.info(

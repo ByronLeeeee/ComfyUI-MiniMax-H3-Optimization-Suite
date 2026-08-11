@@ -18,21 +18,13 @@
    39.79%，完整生成减少34.46%，视频 SSIM=0.8153、PSNR=20.24 dB；
    CAB-2 10步则分别减少49.79%与43.23%，SSIM=0.8060、PSNR=19.02 dB。
 
-Hybrid/Sage3 的20步实测 denoise 分别为180.298秒和178.994秒，比当前
-Sage2基准快13.63%和14.26%，但峰值升至5539.690 MiB，latent轨迹和画面
-时序明显变化。全程Sage3只比首尾Sage2的Hybrid再快0.72%，因此当前更推荐
-`balanced_fast`，而不是`maximum_speed`。
-
 对于官方默认 20 步，推荐优先使用：
 
 - 稳妥速度：`exact_speed + res_multistep + stock_simple + 20 steps`
 - 显存压力：`exact_low_vram + res_multistep + stock_simple + 20 steps`
-- 近似加速：`balanced_fast + res_multistep + stock_simple + 20 steps`
 
 CAB 更适合用14、12、10步换取不同幅度的速度提升，而不是在相同20步上期待
 直接加速。单个样本中14步最接近20步参考，但仍需更大的prompt/seed回归集。
-
-![736p performance and VRAM chart](benchmark_artifacts/media/performance_vram_chart.png)
 
 ## 2. 测试环境
 
@@ -116,28 +108,7 @@ NVFP4 GEMM，不跳过 block，也不减少采样步数。
 
 判断：显存临界时价值高；显存充足、只追求速度时使用普通 Sage2 更合适。
 
-### 4.3 H3 Blackwell Hybrid Attention
-
-`balanced_fast` 在首尾 denoise calls 使用较保守的 Sage2，中段使用
-SageAttention3 FP4。`maximum_speed` 则全程使用 Sage3。
-
-- 20步Hybrid实际执行2次Sage2 + 18次Sage3，denoise 180.298秒，
-  比Sage2基准快13.63%。
-- 20步全Sage3 denoise 178.994秒，比Sage2基准快14.26%，但只比Hybrid快0.72%。
-- 两者峰值均为5539.690 MiB，比Fused+Sage2高1129.481 MiB。
-- 对20步参考，Hybrid视频SSIM=0.7705、PSNR=19.12 dB；全Sage3为
-  SSIM=0.7534、PSNR=17.03 dB。这里的低相似度包含动作相位/轨迹变化，
-  不能简单等同为主观画质下降。
-- Sage3 是近似 attention，累计误差和内容敏感性必须通过视频 A/B 判断。
-
-判断：Hybrid保留首尾Sage2的时间成本很小，优先于全Sage3；两者都会明显增加
-临时显存，不能用于缓解高分辨率显存压力，也不能标为“无损”。
-
-![20-step attention comparison at 2.5s](benchmark_artifacts/media/attention_20step_frame_2p5s.png)
-
-[下载20步Attention 2×2对比视频](benchmark_artifacts/media/attention_20step_2x2.mp4)
-
-### 4.4 H3 CAB Low-Step Sampler
+### 4.3 H3 CAB Low-Step Sampler
 
 CAB-2/CAB-3 是 training-free 多步求解器，复用历史 velocity 并进行 defect
 correction，不增加每一步中的模型调用。该节点按照 CAB 论文方程独立适配了
@@ -167,9 +138,8 @@ ComfyUI denoised-output 约定和 H3 的音视频 NestedTensor。
 | CAB-2 12步 | 116.859 s | 146.589 s | 4522.856 | 0.8153 / 20.24 dB |
 | CAB-2 10步 | 97.438 s | 126.983 s | 4522.856 | 0.8060 / 19.02 dB |
 
-CAB-14第一次运行从Sage3切回Sage2时发生一次61秒首步加载异常；随后无解码暖机
-复测为136.763秒，并得到相同latent hash。表格采用暖机复测的denoise数据，
-原始异常计时也保留在`benchmark_artifacts/raw`中。
+CAB-14第一次运行发生一次61秒首步加载异常；随后无解码暖机复测为136.763秒，
+并得到相同latent hash。表格采用暖机复测的denoise数据。
 
 判断：CAB的速度基本随NFE线性下降，代价是约112.647 MiB历史状态显存和逐渐
 偏离20步轨迹。本样本14步最接近参考；12步提供更激进但仍可辨认的折中。
@@ -178,7 +148,7 @@ CAB-14第一次运行从Sage3切回Sage2时发生一次61秒首步加载异常�
 
 [下载CAB 20/14/12/10步 2×2对比视频](benchmark_artifacts/media/cab_lowstep_2x2.mp4)
 
-### 4.5 H3 Low-Step Sigmas
+### 4.4 H3 Low-Step Sigmas
 
 - `stock_simple` 精确复现 ComfyUI simple scheduler 的离散索引和 H3 原生 shift。
 - `balanced_late`、`strong_late` 和自定义 late bias 在当前样本上均未优于
@@ -186,7 +156,7 @@ CAB-14第一次运行从Sage3切回Sage2时发生一次61秒首步加载异常�
 
 判断：保留为研究接口，但生产默认应使用 `stock_simple`。
 
-### 4.6 两个统一入口节点
+### 4.5 两个统一入口节点
 
 新增：
 
@@ -194,8 +164,7 @@ CAB-14第一次运行从Sage3切回Sage2时发生一次61秒首步加载异常�
 - `H3 Optimized Sampling`
 
 控制器只编排独立插件，不复制 CUDA/Triton kernel。它会检测重复 attention
-override，并将 `steps` 直接输出给采样节点，防止 Hybrid 调度步数与 sigma
-步数不一致。
+override，并将 `steps` 直接输出给采样节点，防止求解器步数与 sigma 步数不一致。
 
 真实烟雾测试：
 
@@ -217,8 +186,6 @@ override，并将 `steps` 直接输出给采样节点，防止 Hybrid 调度步�
 | Stock KJ Sage2 | 20 | 208.756 s | 244.969 s | 5122.455 | 1.0000 / ∞ |
 | Fused + Sage2 | 20 | 194.079 s | 223.674 s | 4410.209 | 1.0000 / ∞ |
 | Fused + LowMem Sage2 | 20 | 198.212 s | 228.359 s | 3843.612 | 1.0000 / ∞ |
-| Hybrid Sage2/Sage3 | 20 | 180.298 s | 210.591 s | 5539.690 | 0.7705 / 19.12 dB |
-| Sage3 all | 20 | 178.994 s | 208.903 s | 5539.690 | 0.7534 / 17.03 dB |
 | Fused + CAB-2 | 14 | 136.763 s | 137.504 s（未解码） | 4522.856 | 0.8274 / 21.66 dB |
 | Fused + CAB-2 | 12 | 116.859 s | 146.589 s | 4522.856 | 0.8153 / 20.24 dB |
 | Fused + CAB-2 | 10 | 97.438 s | 126.983 s | 4522.856 | 0.8060 / 19.02 dB |
@@ -228,7 +195,6 @@ override，并将 `steps` 直接输出给采样节点，防止 Hybrid 调度步�
 | Fused MLP | 每一步生效，绝对节省时间累计增加 | 默认开启 |
 | exact Sage2 | 保持测试路径数值一致 | 日常默认 |
 | Low-Memory Sage2 | 峰值显存下降，但不是按步数累计 | 显存临界时开启 |
-| Hybrid/Sage3 | Sage3 覆盖比例更高，潜在加速更明显 | 必须 A/B |
 | CAB-2 | 同为 20 步时不减少 NFE | 用于尝试降低到 14/12/10 步 |
 | biased sigmas | 当前没有正向证据 | 保持 stock simple |
 
@@ -262,17 +228,7 @@ sigmas: stock_simple
 steps: 20
 ```
 
-### 6.4 近似全步数加速
-
-```text
-preset: balanced_fast
-sage2_edge_calls: 1
-sampler: res_multistep
-sigmas: stock_simple
-steps: 20
-```
-
-### 6.5 低步数实验
+### 6.4 低步数实验
 
 ```text
 preset: exact_speed
@@ -282,8 +238,7 @@ sigmas: stock_simple
 steps: 14 -> 12 -> 10，逐档对比20步参考
 ```
 
-低步数测试先使用精确 attention，确认 CAB 差异后再叠加 Hybrid，避免同时引入
-两个近似变量而无法判断画质变化来源。
+低步数测试使用精确 Sage2 attention。
 
 ## 7. 局限与后续工作
 
@@ -294,10 +249,8 @@ steps: 14 -> 12 -> 10，逐档对比20步参考
 - 已完成单prompt/seed的20步参考与CAB 10/12/14步矩阵，但尚未形成大样本统计。
 - 尚未覆盖对白、复杂手部、多人交互、快速剪辑、强音画同步等高难度内容。
 - Blackwell 以外仅验证了 Low-Memory Sage2 的设计兼容范围，没有完整实机矩阵。
-- CAB-14捕获到一次由Sage3切回Sage2造成的61秒首步异常，说明动态权重加载和
+- CAB-14捕获到一次61秒首步异常，说明动态权重加载和
   缓存状态仍会污染单次完整耗时；报告因此采用了相同hash的暖机复测denoise值。
-- 视频SSIM/PSNR会惩罚动作时间相位变化；Hybrid画面不同并不自动意味着更差，
-  仍需完整运动和音频盲评。
 
 建议后续建立 8–12 个固定 prompt、至少 3 个 seed 的回归集，分别记录：
 

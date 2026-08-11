@@ -39,32 +39,6 @@
     "psnr_to_res20_db": "inf"
   },
   {
-    "name": "hybrid_sage3_res20",
-    "steps": 20,
-    "prompt_elapsed_seconds": 210.591,
-    "denoise_total_seconds": 180.298,
-    "denoise_mean_seconds": 9.015,
-    "steady_mean_seconds": 8.973,
-    "peak_allocated_mib": 5539.69,
-    "combined_sha256": "d1bacc1e46f4f8962f559dacfcde8f4413cce0c147f2423e3dac4cc264fa9778",
-    "video_filename": "hybrid_sage3_res20_00001_.mp4",
-    "ssim_to_res20": 0.770541,
-    "psnr_to_res20_db": 19.1236
-  },
-  {
-    "name": "sage3_all_res20",
-    "steps": 20,
-    "prompt_elapsed_seconds": 208.903,
-    "denoise_total_seconds": 178.994,
-    "denoise_mean_seconds": 8.95,
-    "steady_mean_seconds": 8.934,
-    "peak_allocated_mib": 5539.69,
-    "combined_sha256": "7e37f544f4e5bc8f4f4f841cb51e674d70c9771f680437f8e152f78fcadc5007",
-    "video_filename": "sage3_all_res20_00001_.mp4",
-    "ssim_to_res20": 0.75339,
-    "psnr_to_res20_db": 17.0293
-  },
-  {
     "name": "fused_sage2_cab14",
     "steps": 14,
     "prompt_elapsed_seconds": 137.504,

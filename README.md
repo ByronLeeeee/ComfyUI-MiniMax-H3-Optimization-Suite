@@ -40,8 +40,6 @@ Controller presets:
 |---|---|---|
 | `exact_speed` | fused NVFP4 MLP + KJ Sage2 `auto` | exact against the tested Sage2 path |
 | `exact_low_vram` | fused NVFP4 MLP + low-memory Sage2 | exact latent hash in validation |
-| `balanced_fast` | fused MLP + Sage2 edge calls + Sage3 middle calls | approximate |
-| `maximum_speed` | fused MLP + Sage3 for every call | approximate |
 | `off` | no model patch | control |
 
 The validated low-step starting point is `CAB-2`, `theta=0.20`, and
@@ -57,18 +55,12 @@ Fixed prompt, seed, model and stock-simple sigmas on an RTX 5070 Ti 16 GB:
 | KJ Sage2 baseline | 208.756 s | 244.969 s | 5122.455 MiB | reference |
 | Fused MLP + Sage2 | 194.079 s | 223.674 s | 4410.209 MiB | exact hash |
 | Fused MLP + LowMem Sage2 | 198.212 s | 228.359 s | 3843.612 MiB | exact hash |
-| Hybrid Sage2/Sage3 | 180.298 s | 210.591 s | 5539.690 MiB | approximate |
-| Sage3 all | 178.994 s | 208.903 s | 5539.690 MiB | approximate |
 
 Fused MLP improved denoise time by 7.03% and reduced the measured peak by
 712.246 MiB while keeping the latent and decoded video exact. Low-Memory Sage2
 returned another 566.597 MiB at a 2.13% denoise-time cost relative to fused
-stock Sage2. Hybrid was 13.63% faster than the baseline, but used more temporary
-VRAM and changed the trajectory.
+stock Sage2.
 
-![Performance and VRAM chart](benchmark_artifacts/media/performance_vram_chart.png)
-
-- [20-step attention comparison video](benchmark_artifacts/media/attention_20step_2x2.mp4)
 - [CAB 20/14/12/10-step comparison video](benchmark_artifacts/media/cab_lowstep_2x2.mp4)
 - [Raw profiler data and frame metrics](benchmark_artifacts/raw/performance_and_quality_results.csv)
 - [Full Chinese evaluation report](EVALUATION_REPORT.zh-CN.md)
@@ -79,7 +71,9 @@ This is a source monorepo. Copy the required directories from [`plugins/`](plugi
 into `ComfyUI/custom_nodes/`, keeping each plugin as its own directory, then
 restart ComfyUI.
 
-For all controller presets and sampling modes, copy all seven directories.
+For all supported controller presets and sampling modes, copy the controller,
+Fused MLP, Low-Memory Sage2, CAB Sampler, and Low-Step Sigmas directories.
+Step Profiler is optional.
 `exact_speed` additionally requires
 [ComfyUI-KJNodes](https://github.com/kijai/ComfyUI-KJNodes). Sage presets require
 a SageAttention build compatible with the active Python, PyTorch, CUDA, and GPU.
@@ -108,7 +102,6 @@ of adding another Sage Attention node in front of it.
 | Component | Blackwell SM 12.x | Ada SM 8.9 | Other GPUs |
 |---|---:|---:|---:|
 | NVFP4 Fused MLP | yes | no | no |
-| Hybrid / Sage3 attention | yes | no | no |
 | Low-Memory Sage2 | yes | yes | not validated |
 | CAB sampler / sigma schedule | yes | yes | expected to be portable; not validated |
 | Controller | yes | partial, with unsupported features disabled | depends on selected components |
@@ -117,7 +110,6 @@ of adding another Sage Attention node in front of it.
 
 - `ComfyUI-H3-Optimization-Controller`
 - `ComfyUI-H3-NVFP4-Fused-MLP`
-- `ComfyUI-H3-Blackwell-Hybrid-Attention`
 - `ComfyUI-H3-Low-Memory-Sage2`
 - `ComfyUI-H3-CAB-Sampler`
 - `ComfyUI-H3-Low-Step-Sigmas`

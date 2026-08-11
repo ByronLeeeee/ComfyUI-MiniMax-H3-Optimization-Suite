@@ -22,7 +22,7 @@ Connect the sampler output to `SamplerCustomAdvanced`. CAB retains several
 small latent-history buffers, so its sampler-state VRAM is slightly higher than
 `res_multistep`, while the H3 model/attention peak remains dominant.
 
-This implementation is independent of the H3 MLP, Hybrid Attention,
+This implementation is independent of the H3 MLP, attention,
 Low-Memory Sage2, and sigma-schedule plugins. It ports the published equations
 to Comfy's denoised-output convention and H3's nested audio/video latent type;
 it does not copy or modify ComfyUI core files.

@@ -18,17 +18,13 @@ Presets:
   peak attention allocation in the validated workload, with a small speed cost.
 - `exact_speed`: fused NVFP4 MLP + KJ Sage2 `auto`. Best exact-speed starting
   point; requires ComfyUI-KJNodes.
-- `balanced_fast`: fused NVFP4 MLP + Sage2 at denoise edges and Sage3 in the
-  middle. Faster, but approximate.
-- `maximum_speed`: fused NVFP4 MLP + Sage3 for all calls. Fastest preset and the
-  least conservative one.
 - `off`: leaves the model unchanged and only passes the step count through.
 
 `fused_mlp` may be disabled independently. `vram_residency` controls the fused
 MLP plugin's conservative attempt to return saved activation headroom to
 ComfyUI's dynamic weight loader. Leave it `off` unless measuring residency.
 
-Do not put KJ Sage Attention, Low-Memory Sage2, or Hybrid Attention before this
+Do not put KJ Sage Attention or Low-Memory Sage2 before this
 node. The controller rejects competing attention overrides instead of silently
 replacing one.
 
@@ -51,7 +47,6 @@ model evaluation inside a nominal step.
 
 - ComfyUI-H3-NVFP4-Fused-MLP (unless `fused_mlp` is disabled)
 - ComfyUI-H3-Low-Memory-Sage2 for `exact_low_vram`
-- ComfyUI-H3-Blackwell-Hybrid-Attention for the two approximate presets
 - ComfyUI-H3-CAB-Sampler
 - ComfyUI-H3-Low-Step-Sigmas
 - ComfyUI-KJNodes for `exact_speed`

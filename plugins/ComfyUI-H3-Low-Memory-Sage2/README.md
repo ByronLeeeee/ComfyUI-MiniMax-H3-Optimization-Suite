@@ -21,13 +21,13 @@ so the node primarily targets VRAM headroom rather than speed.
 
 Connect it after the model loader and optional H3 NVFP4 Fused MLP node, then
 connect its output directly to the guider/sampler. Remove or bypass `Patch Sage
-Attention KJ`, Blackwell Hybrid Attention, and other attention replacements.
+Attention KJ` and other attention replacements.
 
 Supported GPU paths match Sage2's FP8 CUDA implementation: Ada SM 8.9 and
 Blackwell SM 10.0/12.x. The installed SageAttention wheel must match ComfyUI's
 Torch and CUDA versions.
 
-This package is independent from the existing H3 MLP and Hybrid Attention
+This package is independent from the existing H3 MLP and other attention
 plugins and does not overwrite either one.
 
 ## RTX 5070 Ti validation

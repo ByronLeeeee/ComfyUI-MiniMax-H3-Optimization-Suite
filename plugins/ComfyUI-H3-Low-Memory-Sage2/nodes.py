@@ -245,7 +245,7 @@ class H3LowMemorySage2Attention:
             raise ValueError("H3 Low-Memory Sage2 has already been applied")
         if "optimized_attention_override" in options:
             raise ValueError(
-                "Remove Patch Sage Attention / Hybrid Attention before applying "
+                "Remove other attention patches before applying "
                 "H3 Low-Memory Sage2"
             )
 

@@ -1174,60 +1174,44 @@
                 "link": 236
               },
               {
-                "name": "preset",
-                "link": null,
-                "type": "COMBO",
                 "widget": {
                   "name": "preset"
-                }
+                },
+                "name": "preset",
+                "type": "COMBO",
+                "link": null
               },
               {
-                "name": "steps",
-                "link": null,
-                "type": "INT",
                 "widget": {
                   "name": "steps"
-                }
+                },
+                "name": "steps",
+                "type": "INT",
+                "link": null
               },
               {
-                "name": "fused_mlp",
-                "link": null,
-                "type": "BOOLEAN",
                 "widget": {
                   "name": "fused_mlp"
-                }
+                },
+                "name": "fused_mlp",
+                "type": "BOOLEAN",
+                "link": null
               },
               {
-                "name": "vram_residency",
-                "link": null,
-                "type": "COMBO",
                 "widget": {
                   "name": "vram_residency"
-                }
+                },
+                "name": "vram_residency",
+                "type": "COMBO",
+                "link": null
               },
               {
-                "name": "sage2_edge_calls",
-                "link": null,
-                "type": "INT",
-                "widget": {
-                  "name": "sage2_edge_calls"
-                }
-              },
-              {
-                "name": "sage3_per_block_mean",
-                "link": null,
-                "type": "BOOLEAN",
-                "widget": {
-                  "name": "sage3_per_block_mean"
-                }
-              },
-              {
-                "name": "allow_compile",
-                "link": null,
-                "type": "BOOLEAN",
                 "widget": {
                   "name": "allow_compile"
-                }
+                },
+                "name": "allow_compile",
+                "type": "BOOLEAN",
+                "link": null
               }
             ],
             "outputs": [
@@ -1255,8 +1239,6 @@
               20,
               true,
               "off",
-              1,
-              false,
               true
             ]
           },
@@ -1286,36 +1268,36 @@
                 "link": 239
               },
               {
-                "name": "sampler_mode",
-                "link": null,
-                "type": "COMBO",
                 "widget": {
                   "name": "sampler_mode"
-                }
+                },
+                "name": "sampler_mode",
+                "type": "COMBO",
+                "link": null
               },
               {
-                "name": "sigma_profile",
-                "link": null,
-                "type": "COMBO",
                 "widget": {
                   "name": "sigma_profile"
-                }
+                },
+                "name": "sigma_profile",
+                "type": "COMBO",
+                "link": null
               },
               {
-                "name": "theta",
-                "link": null,
-                "type": "FLOAT",
                 "widget": {
                   "name": "theta"
-                }
+                },
+                "name": "theta",
+                "type": "FLOAT",
+                "link": null
               },
               {
-                "name": "late_bias",
-                "link": null,
-                "type": "FLOAT",
                 "widget": {
                   "name": "late_bias"
-                }
+                },
+                "name": "late_bias",
+                "type": "FLOAT",
+                "link": null
               }
             ],
             "outputs": [
@@ -1605,52 +1587,52 @@
             "type": "COMBO"
           },
           {
-            "target_id": 122,
-            "origin_id": 6,
+            "target_slot": 0,
+            "type": "MODEL",
             "id": 236,
-            "target_slot": 0,
-            "type": "MODEL",
-            "origin_slot": 0
+            "target_id": 122,
+            "origin_slot": 0,
+            "origin_id": 6
           },
           {
-            "target_id": 16,
-            "origin_id": 122,
+            "target_slot": 0,
+            "type": "MODEL",
             "id": 237,
-            "target_slot": 0,
-            "type": "MODEL",
-            "origin_slot": 0
+            "target_id": 16,
+            "origin_slot": 0,
+            "origin_id": 122
           },
           {
-            "target_id": 123,
-            "origin_id": 122,
+            "target_slot": 0,
+            "type": "MODEL",
             "id": 238,
-            "target_slot": 0,
-            "type": "MODEL",
-            "origin_slot": 0
+            "target_id": 123,
+            "origin_slot": 0,
+            "origin_id": 122
           },
           {
-            "target_id": 123,
-            "origin_id": 122,
-            "id": 239,
             "target_slot": 1,
             "type": "INT",
-            "origin_slot": 1
+            "id": 239,
+            "target_id": 123,
+            "origin_slot": 1,
+            "origin_id": 122
           },
           {
-            "target_id": 14,
-            "origin_id": 123,
-            "id": 240,
             "target_slot": 2,
             "type": "SAMPLER",
-            "origin_slot": 0
+            "id": 240,
+            "target_id": 14,
+            "origin_slot": 0,
+            "origin_id": 123
           },
           {
-            "target_id": 14,
-            "origin_id": 123,
-            "id": 241,
             "target_slot": 3,
             "type": "SIGMAS",
-            "origin_slot": 1
+            "id": 241,
+            "target_id": 14,
+            "origin_slot": 1,
+            "origin_id": 123
           }
         ],
         "extra": {}
