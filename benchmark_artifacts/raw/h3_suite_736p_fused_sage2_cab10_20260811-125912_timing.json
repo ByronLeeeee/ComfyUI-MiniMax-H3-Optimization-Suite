@@ -1,0 +1,111 @@
+{
+  "expected_calls": 10,
+  "observed_calls": 10,
+  "samples_ms": [
+    9846.205078125,
+    9727.607421875,
+    9756.611328125,
+    9727.2353515625,
+    9759.845703125,
+    9728.52734375,
+    9722.99609375,
+    9724.087890625,
+    9722.7705078125,
+    9721.83203125
+  ],
+  "memory_samples": [
+    {
+      "allocated_before_mib": 89.44468307495117,
+      "allocated_after_mib": 101.96104049682617,
+      "peak_allocated_mib": 4372.29093170166,
+      "reserved_before_mib": 192.0,
+      "reserved_after_mib": 4896.0,
+      "peak_reserved_mib": 4896.0,
+      "incremental_peak_allocated_mib": 4282.846248626709
+    },
+    {
+      "allocated_before_mib": 152.0265007019043,
+      "allocated_after_mib": 164.5428581237793,
+      "peak_allocated_mib": 4435.2419357299805,
+      "reserved_before_mib": 4896.0,
+      "reserved_after_mib": 4896.0,
+      "peak_reserved_mib": 4896.0,
+      "incremental_peak_allocated_mib": 4283.215435028076
+    },
+    {
+      "allocated_before_mib": 164.5428695678711,
+      "allocated_after_mib": 177.0592269897461,
+      "peak_allocated_mib": 4447.758304595947,
+      "reserved_before_mib": 4896.0,
+      "reserved_after_mib": 4896.0,
+      "peak_reserved_mib": 4896.0,
+      "incremental_peak_allocated_mib": 4283.215435028076
+    },
+    {
+      "allocated_before_mib": 239.6410255432129,
+      "allocated_after_mib": 252.1573829650879,
+      "peak_allocated_mib": 4522.856460571289,
+      "reserved_before_mib": 4896.0,
+      "reserved_after_mib": 4896.0,
+      "peak_reserved_mib": 4896.0,
+      "incremental_peak_allocated_mib": 4283.215435028076
+    },
+    {
+      "allocated_before_mib": 239.6410255432129,
+      "allocated_after_mib": 252.1573829650879,
+      "peak_allocated_mib": 4522.856460571289,
+      "reserved_before_mib": 4896.0,
+      "reserved_after_mib": 4896.0,
+      "peak_reserved_mib": 4896.0,
+      "incremental_peak_allocated_mib": 4283.215435028076
+    },
+    {
+      "allocated_before_mib": 239.6410255432129,
+      "allocated_after_mib": 252.1573829650879,
+      "peak_allocated_mib": 4522.856460571289,
+      "reserved_before_mib": 4896.0,
+      "reserved_after_mib": 4896.0,
+      "peak_reserved_mib": 4896.0,
+      "incremental_peak_allocated_mib": 4283.215435028076
+    },
+    {
+      "allocated_before_mib": 239.6410255432129,
+      "allocated_after_mib": 252.1573829650879,
+      "peak_allocated_mib": 4522.856460571289,
+      "reserved_before_mib": 4896.0,
+      "reserved_after_mib": 4896.0,
+      "peak_reserved_mib": 4896.0,
+      "incremental_peak_allocated_mib": 4283.215435028076
+    },
+    {
+      "allocated_before_mib": 239.6410255432129,
+      "allocated_after_mib": 252.1573829650879,
+      "peak_allocated_mib": 4522.856460571289,
+      "reserved_before_mib": 4896.0,
+      "reserved_after_mib": 4896.0,
+      "peak_reserved_mib": 4896.0,
+      "incremental_peak_allocated_mib": 4283.215435028076
+    },
+    {
+      "allocated_before_mib": 239.6410255432129,
+      "allocated_after_mib": 252.1573829650879,
+      "peak_allocated_mib": 4522.856460571289,
+      "reserved_before_mib": 4896.0,
+      "reserved_after_mib": 4896.0,
+      "peak_reserved_mib": 4896.0,
+      "incremental_peak_allocated_mib": 4283.215435028076
+    },
+    {
+      "allocated_before_mib": 239.6410255432129,
+      "allocated_after_mib": 252.1573829650879,
+      "peak_allocated_mib": 4522.856460571289,
+      "reserved_before_mib": 4896.0,
+      "reserved_after_mib": 4896.0,
+      "peak_reserved_mib": 4896.0,
+      "incremental_peak_allocated_mib": 4283.215435028076
+    }
+  ],
+  "total_ms": 97437.71875,
+  "mean_ms": 9743.771875,
+  "steady_mean_excluding_first_ms": 9732.390407986111
+}

@@ -1,0 +1,33 @@
+{
+  "combined_sha256": "a221a6451bcd5ee8da4199b9988e63474c9cf87e945c1a86726bb25ced439731",
+  "tensor_count": 2,
+  "tensors": [
+    {
+      "path": "root.samples.tensors[0]",
+      "shape": [
+        1,
+        24,
+        37,
+        46,
+        80
+      ],
+      "dtype": "torch.float32",
+      "device": "cpu",
+      "bytes": 13071360,
+      "sha256": "34589db3d5a77a9dd580f02064c9a35cc63ba49d814f43d0ce0941f187a5ff72"
+    },
+    {
+      "path": "root.samples.tensors[1]",
+      "shape": [
+        1,
+        32,
+        2,
+        207
+      ],
+      "dtype": "torch.float32",
+      "device": "cpu",
+      "bytes": 52992,
+      "sha256": "c16cae73bce241e6af31282b24af8d50fea604f400c84a67ed7eb77b5755f097"
+    }
+  ]
+}

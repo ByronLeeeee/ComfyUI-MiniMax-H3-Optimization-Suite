@@ -48,6 +48,31 @@ The validated low-step starting point is `CAB-2`, `theta=0.20`, and
 `stock_simple` sigmas. For the official 20-step baseline, start with
 `res_multistep` and `stock_simple`.
 
+## 736p / 5-second / 20-step evaluation
+
+Fixed prompt, seed, model and stock-simple sigmas on an RTX 5070 Ti 16 GB:
+
+| Configuration | Denoise | Full prompt | Peak allocated VRAM | Output |
+|---|---:|---:|---:|---|
+| KJ Sage2 baseline | 208.756 s | 244.969 s | 5122.455 MiB | reference |
+| Fused MLP + Sage2 | 194.079 s | 223.674 s | 4410.209 MiB | exact hash |
+| Fused MLP + LowMem Sage2 | 198.212 s | 228.359 s | 3843.612 MiB | exact hash |
+| Hybrid Sage2/Sage3 | 180.298 s | 210.591 s | 5539.690 MiB | approximate |
+| Sage3 all | 178.994 s | 208.903 s | 5539.690 MiB | approximate |
+
+Fused MLP improved denoise time by 7.03% and reduced the measured peak by
+712.246 MiB while keeping the latent and decoded video exact. Low-Memory Sage2
+returned another 566.597 MiB at a 2.13% denoise-time cost relative to fused
+stock Sage2. Hybrid was 13.63% faster than the baseline, but used more temporary
+VRAM and changed the trajectory.
+
+![Performance and VRAM chart](benchmark_artifacts/media/performance_vram_chart.png)
+
+- [20-step attention comparison video](benchmark_artifacts/media/attention_20step_2x2.mp4)
+- [CAB 20/14/12/10-step comparison video](benchmark_artifacts/media/cab_lowstep_2x2.mp4)
+- [Raw profiler data and frame metrics](benchmark_artifacts/raw/performance_and_quality_results.csv)
+- [Full Chinese evaluation report](EVALUATION_REPORT.zh-CN.md)
+
 ## Installation
 
 This is a source monorepo. Copy the required directories from [`plugins/`](plugins)
@@ -62,6 +87,21 @@ a SageAttention build compatible with the active Python, PyTorch, CUDA, and GPU.
 Do not put another Sage/attention patch before **H3 Optimization Controller**.
 The controller intentionally rejects competing overrides instead of silently
 replacing them.
+
+## Example workflow
+
+Import
+[`example_workflows/MiniMax_H3_Unified_Optimization_20step.json`](example_workflows/MiniMax_H3_Unified_Optimization_20step.json)
+into ComfyUI. It is a 5-second text-to-video workflow configured for the
+conservative 20-step starting point:
+
+```text
+exact_speed + res_multistep + stock_simple + 20 steps
+```
+
+The workflow retains the original model selectors, resolution selector, audio
+and video VAE decode, and video save nodes. Change the controller preset instead
+of adding another Sage Attention node in front of it.
 
 ## Hardware scope
 
@@ -97,4 +137,3 @@ uses a separate approximate strategy and remains under evaluation.
 
 The code in this repository is released under the [MIT License](LICENSE).
 External packages and model files are not bundled and retain their own terms.
-

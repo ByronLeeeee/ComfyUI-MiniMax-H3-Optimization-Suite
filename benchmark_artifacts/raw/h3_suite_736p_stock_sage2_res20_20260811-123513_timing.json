@@ -1,0 +1,211 @@
+{
+  "expected_calls": 20,
+  "observed_calls": 20,
+  "samples_ms": [
+    19097.857421875,
+    9947.78125,
+    9955.4130859375,
+    9936.654296875,
+    9950.376953125,
+    9961.6845703125,
+    9968.2724609375,
+    9977.9638671875,
+    9986.4228515625,
+    9991.0009765625,
+    9991.2529296875,
+    9991.9296875,
+    9994.517578125,
+    9998.103515625,
+    9998.220703125,
+    9998.9423828125,
+    10001.3984375,
+    10003.685546875,
+    10005.12109375,
+    9999.69140625
+  ],
+  "memory_samples": [
+    {
+      "allocated_before_mib": 88.26554107666016,
+      "allocated_after_mib": 100.78189849853516,
+      "peak_allocated_mib": 5084.53694152832,
+      "reserved_before_mib": 192.0,
+      "reserved_after_mib": 6560.0,
+      "peak_reserved_mib": 6560.0,
+      "incremental_peak_allocated_mib": 4996.27140045166
+    },
+    {
+      "allocated_before_mib": 125.81461715698242,
+      "allocated_after_mib": 138.33097457885742,
+      "peak_allocated_mib": 5122.45520401001,
+      "reserved_before_mib": 6560.0,
+      "reserved_after_mib": 6656.0,
+      "peak_reserved_mib": 6656.0,
+      "incremental_peak_allocated_mib": 4996.640586853027
+    },
+    {
+      "allocated_before_mib": 125.81465530395508,
+      "allocated_after_mib": 138.33101272583008,
+      "peak_allocated_mib": 5122.455242156982,
+      "reserved_before_mib": 6656.0,
+      "reserved_after_mib": 6656.0,
+      "peak_reserved_mib": 6656.0,
+      "incremental_peak_allocated_mib": 4996.640586853027
+    },
+    {
+      "allocated_before_mib": 125.81465530395508,
+      "allocated_after_mib": 138.33101272583008,
+      "peak_allocated_mib": 5122.455242156982,
+      "reserved_before_mib": 6656.0,
+      "reserved_after_mib": 6656.0,
+      "peak_reserved_mib": 6656.0,
+      "incremental_peak_allocated_mib": 4996.640586853027
+    },
+    {
+      "allocated_before_mib": 125.81465530395508,
+      "allocated_after_mib": 138.33101272583008,
+      "peak_allocated_mib": 5122.455242156982,
+      "reserved_before_mib": 6656.0,
+      "reserved_after_mib": 6656.0,
+      "peak_reserved_mib": 6656.0,
+      "incremental_peak_allocated_mib": 4996.640586853027
+    },
+    {
+      "allocated_before_mib": 125.81465530395508,
+      "allocated_after_mib": 138.33101272583008,
+      "peak_allocated_mib": 5122.455242156982,
+      "reserved_before_mib": 6656.0,
+      "reserved_after_mib": 6656.0,
+      "peak_reserved_mib": 6656.0,
+      "incremental_peak_allocated_mib": 4996.640586853027
+    },
+    {
+      "allocated_before_mib": 125.81465530395508,
+      "allocated_after_mib": 138.33101272583008,
+      "peak_allocated_mib": 5122.455242156982,
+      "reserved_before_mib": 6656.0,
+      "reserved_after_mib": 6656.0,
+      "peak_reserved_mib": 6656.0,
+      "incremental_peak_allocated_mib": 4996.640586853027
+    },
+    {
+      "allocated_before_mib": 125.81465530395508,
+      "allocated_after_mib": 138.33101272583008,
+      "peak_allocated_mib": 5122.455242156982,
+      "reserved_before_mib": 6656.0,
+      "reserved_after_mib": 6656.0,
+      "peak_reserved_mib": 6656.0,
+      "incremental_peak_allocated_mib": 4996.640586853027
+    },
+    {
+      "allocated_before_mib": 125.81465530395508,
+      "allocated_after_mib": 138.33101272583008,
+      "peak_allocated_mib": 5122.455242156982,
+      "reserved_before_mib": 6656.0,
+      "reserved_after_mib": 6656.0,
+      "peak_reserved_mib": 6656.0,
+      "incremental_peak_allocated_mib": 4996.640586853027
+    },
+    {
+      "allocated_before_mib": 125.81465530395508,
+      "allocated_after_mib": 138.33101272583008,
+      "peak_allocated_mib": 5122.455242156982,
+      "reserved_before_mib": 6656.0,
+      "reserved_after_mib": 6656.0,
+      "peak_reserved_mib": 6656.0,
+      "incremental_peak_allocated_mib": 4996.640586853027
+    },
+    {
+      "allocated_before_mib": 125.81465530395508,
+      "allocated_after_mib": 138.33101272583008,
+      "peak_allocated_mib": 5122.455242156982,
+      "reserved_before_mib": 6656.0,
+      "reserved_after_mib": 6656.0,
+      "peak_reserved_mib": 6656.0,
+      "incremental_peak_allocated_mib": 4996.640586853027
+    },
+    {
+      "allocated_before_mib": 125.81465530395508,
+      "allocated_after_mib": 138.33101272583008,
+      "peak_allocated_mib": 5122.455242156982,
+      "reserved_before_mib": 6656.0,
+      "reserved_after_mib": 6656.0,
+      "peak_reserved_mib": 6656.0,
+      "incremental_peak_allocated_mib": 4996.640586853027
+    },
+    {
+      "allocated_before_mib": 125.81465530395508,
+      "allocated_after_mib": 138.33101272583008,
+      "peak_allocated_mib": 5122.455242156982,
+      "reserved_before_mib": 6656.0,
+      "reserved_after_mib": 6656.0,
+      "peak_reserved_mib": 6656.0,
+      "incremental_peak_allocated_mib": 4996.640586853027
+    },
+    {
+      "allocated_before_mib": 125.81465530395508,
+      "allocated_after_mib": 138.33101272583008,
+      "peak_allocated_mib": 5122.455242156982,
+      "reserved_before_mib": 6656.0,
+      "reserved_after_mib": 6656.0,
+      "peak_reserved_mib": 6656.0,
+      "incremental_peak_allocated_mib": 4996.640586853027
+    },
+    {
+      "allocated_before_mib": 125.81465530395508,
+      "allocated_after_mib": 138.33101272583008,
+      "peak_allocated_mib": 5122.455242156982,
+      "reserved_before_mib": 6656.0,
+      "reserved_after_mib": 6656.0,
+      "peak_reserved_mib": 6656.0,
+      "incremental_peak_allocated_mib": 4996.640586853027
+    },
+    {
+      "allocated_before_mib": 125.81465530395508,
+      "allocated_after_mib": 138.33101272583008,
+      "peak_allocated_mib": 5122.455242156982,
+      "reserved_before_mib": 6656.0,
+      "reserved_after_mib": 6656.0,
+      "peak_reserved_mib": 6656.0,
+      "incremental_peak_allocated_mib": 4996.640586853027
+    },
+    {
+      "allocated_before_mib": 125.81465530395508,
+      "allocated_after_mib": 138.33101272583008,
+      "peak_allocated_mib": 5122.455242156982,
+      "reserved_before_mib": 6656.0,
+      "reserved_after_mib": 6656.0,
+      "peak_reserved_mib": 6656.0,
+      "incremental_peak_allocated_mib": 4996.640586853027
+    },
+    {
+      "allocated_before_mib": 125.81465530395508,
+      "allocated_after_mib": 138.33101272583008,
+      "peak_allocated_mib": 5122.455242156982,
+      "reserved_before_mib": 6656.0,
+      "reserved_after_mib": 6656.0,
+      "peak_reserved_mib": 6656.0,
+      "incremental_peak_allocated_mib": 4996.640586853027
+    },
+    {
+      "allocated_before_mib": 125.81465530395508,
+      "allocated_after_mib": 138.33101272583008,
+      "peak_allocated_mib": 5122.455242156982,
+      "reserved_before_mib": 6656.0,
+      "reserved_after_mib": 6656.0,
+      "peak_reserved_mib": 6656.0,
+      "incremental_peak_allocated_mib": 4996.640586853027
+    },
+    {
+      "allocated_before_mib": 125.81465530395508,
+      "allocated_after_mib": 138.33101272583008,
+      "peak_allocated_mib": 5122.455242156982,
+      "reserved_before_mib": 6656.0,
+      "reserved_after_mib": 6656.0,
+      "peak_reserved_mib": 6656.0,
+      "incremental_peak_allocated_mib": 4996.640586853027
+    }
+  ],
+  "total_ms": 208756.291015625,
+  "mean_ms": 10437.81455078125,
+  "steady_mean_excluding_first_ms": 9982.022820723685
+}
