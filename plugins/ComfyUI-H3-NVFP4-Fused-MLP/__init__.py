@@ -1,0 +1,12 @@
+from .nodes import H3NVFP4FusedMLP
+
+
+NODE_CLASS_MAPPINGS = {
+    "H3NVFP4FusedMLP": H3NVFP4FusedMLP,
+}
+
+NODE_DISPLAY_NAME_MAPPINGS = {
+    "H3NVFP4FusedMLP": "H3 NVFP4 Fused MLP (Experimental)",
+}
+
+__all__ = ["NODE_CLASS_MAPPINGS", "NODE_DISPLAY_NAME_MAPPINGS"]
