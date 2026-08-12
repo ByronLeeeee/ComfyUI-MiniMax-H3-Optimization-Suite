@@ -151,6 +151,13 @@ Fixed prompt, seed, model, and stock-simple schedule on RTX 5070 Ti 16 GB:
 | Fused MLP + Sage2 | 194.079 s | 223.674 s | 4410.209 MiB | exact hash |
 | Fused MLP + Low-Memory Sage2 | 198.212 s | 228.359 s | 3843.612 MiB | exact hash |
 
+Each panel below was extracted independently from frame 60 (2.500 seconds) of
+its own output video. The decoded source frames are pixel-identical in this
+test: matching SHA-256 hashes, SSIM 1.0000, and PSNR infinity. The VRAM labels
+are profiler peak CUDA allocations, not Windows shared-GPU-memory readings.
+
+![Pixel-identical 20-step output comparison with generation time and peak VRAM](benchmark_artifacts/media/exact_20step_frame_2p5s.png)
+
 ### 736×1280, 15 seconds, CAB-14 capacity validation
 
 The chain `Fused Kernels accurate -> Low-Memory Sage2 -> Long-Sequence

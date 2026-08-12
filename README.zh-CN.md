@@ -133,6 +133,12 @@ RTX 5070 Ti 16 GB上固定prompt、seed、模型和stock-simple schedule：
 | Fused MLP + Sage2 | 194.079 s | 223.674 s | 4410.209 MiB | hash完全一致 |
 | Fused MLP + Low-Memory Sage2 | 198.212 s | 228.359 s | 3843.612 MiB | hash完全一致 |
 
+下图三栏分别从各自输出视频的第60帧（2.500秒）独立抽取。本次测试中，三张
+解码画面逐像素一致：SHA-256相同、SSIM为1.0000、PSNR为无穷大。图中显存
+数据是profiler记录的CUDA峰值分配，不是Windows任务管理器中的共享显存读数。
+
+![20步逐像素一致输出的生成时间与峰值显存对比](benchmark_artifacts/media/exact_20step_frame_2p5s.png)
+
 ### 736×1280、15秒、CAB-14容量验证
 
 `Fused Kernels accurate -> Low-Memory Sage2 -> Long-Sequence 16gb_chunked
