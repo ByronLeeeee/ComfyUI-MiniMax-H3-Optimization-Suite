@@ -1,5 +1,7 @@
 # ComfyUI MiniMax H3 Optimization Suite
 
+**English** | [简体中文](README.zh-CN.md)
+
 Modular optimization nodes for ComfyUI's native MiniMax H3 audio/video model.
 The suite targets three different problems without modifying ComfyUI core:
 
